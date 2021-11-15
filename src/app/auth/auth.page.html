@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+  </ion-toolbar> 
+</ion-header>
+<ion-content class="ion-padding"> 
+  <div id="header">
+    <h1>Login</h1>
+    <img src="assets/stock-market.svg" />
+  </div>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="full">
+      <ion-label position="floating">Mobile No</ion-label>
+      <ion-input maxlength="10" formControlName="mobile" type="tel"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
+      Mobile is required.
+    </span>
+    <ion-checkbox slot="end" (ionChange)="onSelectionChange($event,i)"> </ion-checkbox>
+    <div class="tcdiv">
+      I accept the
+      <div> <a class="user-terms" (click)="Openthis(1)">Terms of Use</a></div>
+      <div> <a class="user-terms" (click)="Openthis(2)">Privacy Policy</a></div>
+      <div> <a class="user-terms" (click)="Openthis(3)">Cookies Policy</a></div>
+    </div>
+
+    <ion-button type="button" [disabled]="!isenabled" (click)="verifythis()" expand="block" color="warning">Verify</ion-button>
+    <br> 
+    <div *ngIf="flag == 1">    
+      <ion-item lines="full" *ngIf="flag == 1">
+        <p class="ifmsg" *ngIf="flag == 1 " >Please enter the OTP received on your mobile number.</p>
+        <ion-label position="floating">Enter OTP</ion-label>
+        <ion-input maxlength="10" formControlName="mobileotp" type="number" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" [disabled]="!ionicForm.valid" color="success" expand="block">Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </form>
+</ion-content>
