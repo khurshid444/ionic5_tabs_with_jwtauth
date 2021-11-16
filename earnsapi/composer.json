@@ -1,0 +1,7 @@
+{
+    "require": {
+        "wisembly/elephant.io": "^3.3",
+        "phpmailer/phpmailer": "^6.0",
+        "firebase/php-jwt": "^5.5"
+    }
+}

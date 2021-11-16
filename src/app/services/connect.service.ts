@@ -4,8 +4,6 @@ import { Observable, of } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import {RespuestaTopHeadlines} from '../interface';
 
-
-
 const  apiKey= '13543b43dd0f4d819b36fdda8d4cb071';
 const newsapiUrl= 'https://newsapi.org/v2';
 

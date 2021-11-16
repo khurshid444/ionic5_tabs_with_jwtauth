@@ -26,8 +26,7 @@ export class AuthPage implements OnInit {
   isenabled:boolean=false;
   disableButton;
 
-  constructor(private iab: InAppBrowser,private _navController: NavController,public formBuilder: FormBuilder,public chatConnect:ConnectService,
-    private ucontroller: UcontrollerService,private userDetailService: UserDetailService,private _router: Router,private auth: AuthService) { }
+  constructor(private iab: InAppBrowser,private _navController: NavController,public formBuilder: FormBuilder,public chatConnect:ConnectService,private ucontroller: UcontrollerService,private userDetailService: UserDetailService,private _router: Router,private auth: AuthService) { }
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
@@ -52,23 +51,22 @@ export class AuthPage implements OnInit {
       this.userData["otp"] = this.ionicForm.value.mobileotp;
       this.auth.login(this.userData).subscribe(
         async res => {
-          console.log(res);
+          console.log("AUH RES --->",res);
           await this.ucontroller.hide();
           this.disableButton = false;
           if (res) {
-            this.auth.getUser().then(user => {
+            this.auth.getUser().then(user =>{
+              console.log(user);
             });
             await this._router.navigateByUrl('/members/dashboard');
           } else {
-            // await this.alert.show();
-            await this.ucontroller.showToast('Login Failed');         
+            // await this.ucontroller.showToast('Login Failed');         
           }
         }, error => {
           console.log(error);
           this.ucontroller.hide();
           this.disableButton = false;
-          this.ucontroller.showToast('Login Failed');         
-          // this.alert.show('Login Failed');
+          // this.ucontroller.showToast('Login Failed');         
         }
         );
 
